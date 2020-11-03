@@ -60,9 +60,62 @@ map {
 
 .nav image {
   width: 90rpx;
- 
+
 }
 
 .nav view {
   margin-bottom: 15rpx;
+}
+
+.site_tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 50rpx;
+  bottom: 200rpx;
+  z-index: 77;
+}
+
+.site_tag_now_address image{
+  width: 60rpx;
+}
+
+.site_tag_cirle_b {
+  color: white;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: #f19459;
+  font-size: 44rpx;
+  z-index: 77;
+  position: relative;
+}
+
+.site_tag_cirle_b .cha::before {
+  content: "";
+  display: block;
+  border-radius: 10rpx;
+  background: white;
+  height: 60rpx;
+  width: 8rpx;
+  transform: rotate(46deg);
+  position: absolute;
+  top: 18rpx;
+  left: 44rpx;
+}
+
+.site_tag_cirle_b .cha::after {
+  content: "";
+  display: block;
+  border-radius: 10rpx;
+  background: white;
+  height: 60rpx;
+  width: 8rpx;
+  transform: rotate(-46deg);
+  position: absolute;
+  top: 18rpx;
+  right: 47rpx;
 }

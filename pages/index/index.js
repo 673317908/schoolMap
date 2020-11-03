@@ -7,7 +7,7 @@ Page({
     longitude: 105.886772,
     latitude: 29.391787,
     showCompass: true, // 是否开启指南针
-    showLocation:true, // 显示带有方向的当前定位点
+    showLocation: true, // 显示带有方向的当前定位点
     enableRotate: true, // 是否支持旋转
     scale: 16, // 缩放级别，取值范围为3-20
     /**
@@ -292,9 +292,15 @@ Page({
     })
   },
   /**学校详情 */
-  jump(){
+  jump() {
     wx.navigateTo({
       url: '../shcoolDetail/index',
+    })
+  },
+  /**路线 */
+  pathLine() {
+    this.setData({
+      activeShow: !this.data.activeShow,
     })
   },
   onLoad: function () {

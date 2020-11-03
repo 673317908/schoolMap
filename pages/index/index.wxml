@@ -1,17 +1,7 @@
 <!--index.wxml-->
-<map 
-id="myMap" 
-latitude="{{latitude}}" 
-longitude="{{longitude}}" 
-show-location="{{showLocation}}"
-show-compass="{{showCompass}}" 
-enable-rotate="{{enableRotate}}" 
-scale="{{scale}}" 
-markers="{{markers}}"
-polygons="{{polygon}}" 
-enable-rotate="{{true}}" 
-enable-overlooking="{{ true }}" 
-enable-3D="{{ true }}">
+<map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" show-location="{{showLocation}}"
+	show-compass="{{showCompass}}" enable-rotate="{{enableRotate}}" scale="{{scale}}" markers="{{markers}}"
+	polygons="{{polygon}}" enable-rotate="{{true}}" enable-overlooking="{{ true }}" enable-3D="{{ true }}">
 </map>
 <view class="nav">
 	<view class="nav_detail" bindtap="jump">
@@ -29,4 +19,17 @@ enable-3D="{{ true }}">
 		</view>
 	</scroll-view>
 </view>
-<!-- <view bindtap="getCenterLocation" class="newAddress">当前位置</view> -->
+<view class="site_tag">
+	<view class="site_tag_now_address">
+		<image mode="widthFix" src="../../images/target.png"></image>
+	</view>
+	<view class="site_tag_cirle">
+		<view class="site_tag_cirle_b" bindtap="pathLine">
+			<text class="zi" wx:if="{{activeShow}}">游</text>
+			<text class="cha" wx:else></text>
+		</view>
+	</view>
+	<view class="site_tag_now_address">
+		<image mode="widthFix" src="../../images/search.png"></image>
+	</view>
+</view>
