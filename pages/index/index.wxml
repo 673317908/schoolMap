@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<map 
+id="myMap" 
+latitude="{{latitude}}" 
+longitude="{{longitude}}" 
+show-location="{{showLocation}}"
+show-compass="{{showCompass}}" 
+enable-rotate="{{enableRotate}}" 
+scale="{{scale}}" 
+markers="{{markers}}"
+polygons="{{polygon}}" 
+enable-rotate="{{true}}" 
+enable-overlooking="{{ true }}" 
+enable-3D="{{ true }}">
+</map>
+<view class="nav">
+	<view class="nav_detail" bindtap="jump">
+		<image mode="widthFix" src="../../images/nfsysu.png"></image>
+	</view>
+	<view class="nav_list" bindtap="activeMap">
+		<image mode="widthFix" src="../../images/park.png"></image>
+	</view>
+</view>
+<view class="{{activeShow?'filter_markes':'filter_markes_show'}}">
+	<scroll-view scroll-y="true" style="height:555rpx;" enhanced show-scrollbar>
+		<view class="{{activeIndex===index?['acitve_css filter_markes_item']:'filter_markes_item'}}" wx:for="{{filterData}}"
+			wx:key="index" data-index="{{index}}" bindtap="active">
+			<text>{{item}}</text>
+		</view>
+	</scroll-view>
+</view>
+<!-- <view bindtap="getCenterLocation" class="newAddress">当前位置</view> -->

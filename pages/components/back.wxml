@@ -1,0 +1,5 @@
+<!--pages/components/back.wxml-->
+<view class="back_box" bindtap="back">
+  <view></view>
+  <view></view>
+</view>

@@ -1,0 +1,36 @@
+<!--pages/shcoolDetail/index.wxml-->
+<back />
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{background}}" wx:key="*this">
+    <swiper-item>
+      <image mode="widthFix" src="{{item.imgUrl}}"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="school_detail">
+  <view class="school_detail_title">
+    <view class="school_logo">
+      <image mode="widthFix" src="../../images/nfsysu-logo.jpg"></image>
+    </view>
+    <view class="school_name">
+      <text>重庆大学城市科技学院</text>
+    </view>
+    <view class="school_address" bindtap="checkAddress">
+      <image mode="widthFix" src="../../images/navigate.png"></image>
+    </view>
+  </view>
+  <view class="school_address">
+    <view bindtap="checkAddress"><text>重庆市永川区光彩大道368号</text></view>
+    <view bindtap="callPhone"><text>023-65112861</text></view>
+  </view>
+  <view class="school_info">
+    <view class="school_info_title">
+      <text>简介</text>
+    </view>
+    <view class="school_info_content">
+      <text>重庆大学城市科技学院是经国家教育部批准设立的一所以本科教育为主的综合性全日制普通高等学校。学校是由重庆大学举办、重庆市教育委员会主管的独立学院。
+        2020年5月21日，重庆市教委发布公告，学院将由独立学院积极转设为普通本科学校。</text>
+      <video controls="{{true}}" src=""></video>
+    </view>
+  </view>
+</view>

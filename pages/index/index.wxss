@@ -1,0 +1,68 @@
+/**index.wxss**/
+map {
+  width: 750rpx;
+  height: 100vh;
+}
+
+.filter_markes {
+  position: fixed;
+  top: 30%;
+  right: 30rpx;
+  border-radius: 20rpx;
+  background: white;
+  opacity: .9;
+  text-align: center;
+  transition: all .2s ease;
+  width: 130rpx;
+  height: 555rpx;
+}
+
+.filter_markes_show {
+  position: fixed;
+  top: 30%;
+  right: -265rpx;
+  border-radius: 20rpx;
+  background: white;
+  opacity: .7;
+  text-align: center;
+  padding: 15rpx;
+  width: 130rpx;
+  transition: all .2s ease;
+}
+
+.filter_markes_item {
+  padding: 10rpx 0;
+  border-radius: 20rpx;
+  transition: all .2s ease;
+}
+
+.acitve_css {
+  background: #a8d4f8;
+  opacity: 1;
+}
+
+.newAddress {
+  position: fixed;
+  top: 15%;
+  right: 30rpx;
+  background: white;
+  opacity: .7;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.nav {
+  position: fixed;
+  right: 20rpx;
+  top: 13%;
+}
+
+.nav image {
+  width: 90rpx;
+ 
+}
+
+.nav view {
+  margin-bottom: 15rpx;
+}
