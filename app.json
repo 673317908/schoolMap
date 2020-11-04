@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/shcoolDetail/index",
-    "pages/components/back"
+    "pages/search/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" show-location="{{showLocation}}"
 	show-compass="{{showCompass}}" enable-rotate="{{enableRotate}}" scale="{{scale}}" markers="{{markers}}"
-	polygons="{{polygon}}" enable-rotate="{{true}}" enable-overlooking="{{ true }}" enable-3D="{{ true }}">
+	polygons="{{polygon}}" enable-rotate="{{true}}" enable-overlooking="{{ true }}" enable-3D="{{ true }}" bindregionchange="moveMap">
 </map>
 <view class="nav">
 	<view class="nav_detail" bindtap="jump">
@@ -20,16 +20,19 @@
 	</scroll-view>
 </view>
 <view class="site_tag">
-	<view class="site_tag_now_address">
+	<view class="site_tag_now_address" bindtap="nowAddress">
 		<image mode="widthFix" src="../../images/target.png"></image>
 	</view>
 	<view class="site_tag_cirle">
+		<view class="{{!polylineShow?'site_tag_cirle_t' :'site_tag_cirle_t_hidden'}}">
+			<view wx:for="{{directionData}}" wx:key="index"><text>{{item}}</text></view>
+		</view>
 		<view class="site_tag_cirle_b" bindtap="pathLine">
-			<text class="zi" wx:if="{{activeShow}}">游</text>
+			<text class="zi" wx:if="{{polylineShow}}">游</text>
 			<text class="cha" wx:else></text>
 		</view>
 	</view>
-	<view class="site_tag_now_address">
+	<view class="site_tag_now_address" bindtap="search">
 		<image mode="widthFix" src="../../images/search.png"></image>
 	</view>
 </view>

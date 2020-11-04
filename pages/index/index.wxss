@@ -72,12 +72,13 @@ map {
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  left: 50rpx;
-  bottom: 200rpx;
+  left: 165rpx;
+  bottom: 120rpx;
   z-index: 77;
+  width: 445rpx;
 }
 
-.site_tag_now_address image{
+.site_tag_now_address image {
   width: 60rpx;
 }
 
@@ -118,4 +119,59 @@ map {
   position: absolute;
   top: 18rpx;
   right: 47rpx;
+}
+
+.site_tag_cirle_t {
+  padding: 10rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 260rpx;
+  height: 260rpx;
+  position: absolute;
+  top: 49rpx;
+  left: 83rpx;
+  transform: translateY(-50%);
+  z-index: 76;
+  transition: all .3s ease;
+}
+
+.site_tag_cirle_t_hidden {
+  width: 0rpx;
+  height: 0rpx;
+  opacity: 0;
+}
+
+.site_tag_cirle_t view {
+  position: fixed;
+  background: white;
+  padding: 10rpx;
+  border-radius: 50%;
+  font-size: 24rpx;
+  color: #000000;
+  z-index: 78;
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+}
+
+.site_tag_cirle_t view:nth-child(1) {
+  top: 120rpx;
+  right: 24rpx;
+
+}
+
+.site_tag_cirle_t view:nth-child(2) {
+  bottom: 19rpx;
+  right: 119rpx;
+}
+
+.site_tag_cirle_t view:nth-child(3) {
+  top: 120rpx;
+  left: 25rpx;
+}
+
+.site_tag_cirle_t view:nth-child(4) {
+  top: 20rpx;
+  left: 116rpx;
 }

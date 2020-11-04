@@ -4,8 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    longitude: 105.886772,
-    latitude: 29.391787,
+    longitude: "",
+    latitude: "",
     showCompass: true, // 是否开启指南针
     showLocation: true, // 显示带有方向的当前定位点
     enableRotate: true, // 是否支持旋转
@@ -263,6 +263,8 @@ Page({
         zIndex: 88
       }
     ],
+    directionData: ['东', '南', '西', '中'],
+    polylineShow: true,
     activeIndex: 0,
     activeShow: true
   },
@@ -300,7 +302,34 @@ Page({
   /**路线 */
   pathLine() {
     this.setData({
-      activeShow: !this.data.activeShow,
+      polylineShow: !this.data.polylineShow,
+      activeShow: false
+    })
+  },
+  /**个人当前位置 */
+  nowAddress() {
+    wx.getLocation({
+      success: (res) => {
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
+      }
+    })
+  },
+  /**拖动地图 */
+  moveMap(e) {
+    if (e.type === 'end') {
+      this.setData({
+        latitude: "",
+        longitude: ""
+      })
+    }
+  },
+  /**搜索 */
+  search() {
+    wx.navigateTo({
+      url: '../search/index',
     })
   },
   onLoad: function () {
@@ -309,15 +338,9 @@ Page({
       markers: that.data.categoryData[0]
     })
     that.mapCtx = wx.createMapContext('myMap')
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        //赋值经纬度
-        that.setData({
-          longitude: 105.886772,
-          latitude: 29.391787,
-        })
-      }
+    that.setData({
+      longitude: 105.886772,
+      latitude: 29.391787,
     })
   },
 })
