@@ -217,13 +217,72 @@ Page({
       ]
     ],
     /**路线 */
-    polyline: [
-      // {
-      //   points: [{ latitude: 29.387147, longitude: 105.883641 }, { latitude: 29.389248, longitude: 105.883679 }],
-      //   color: "#e21918",
-      //   width: 5,
-      //   borderWidth: 2,
-      // }
+    polyline: [],
+    tagLine: [
+      // 中方向
+      [
+        {
+          points: [
+            { id: 1, latitude: 29.389509, longitude: 105.883934, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 2, latitude: 29.389443, longitude: 105.884342, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 3, latitude: 29.390617, longitude: 105.886091, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 4, latitude: 29.389995, longitude: 105.886644, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 5, latitude: 29.389888, longitude: 105.887201, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 6, latitude: 29.390823, longitude: 105.887348, iconPath: '../../images/location.png', title: '教学楼' },
+          ],
+          color: "#e21918",
+          width: 5,
+          borderWidth: 2,
+        }
+      ],
+      // 东方向
+      [
+        {
+          points: [
+            { id: 1, latitude: 29.389509, longitude: 105.883934, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 2, latitude: 29.389443, longitude: 105.884342, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 3, latitude: 29.390617, longitude: 105.886091, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 4, latitude: 29.389995, longitude: 105.886644, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 5, latitude: 29.389888, longitude: 105.887201, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 6, latitude: 29.390823, longitude: 105.887348, iconPath: '../../images/location.png', title: '教学楼' },
+          ],
+          color: "#e21918",
+          width: 5,
+          borderWidth: 2,
+        }
+      ],
+      // 南方向
+      [
+        {
+          points: [
+            { id: 1, latitude: 29.389509, longitude: 105.883934, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 2, latitude: 29.389443, longitude: 105.884342, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 3, latitude: 29.390617, longitude: 105.886091, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 4, latitude: 29.389995, longitude: 105.886644, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 5, latitude: 29.389888, longitude: 105.887201, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 6, latitude: 29.390823, longitude: 105.887348, iconPath: '../../images/location.png', title: '教学楼' },
+          ],
+          color: "#e21918",
+          width: 5,
+          borderWidth: 2,
+        }
+      ],
+      // 西方向
+      [
+        {
+          points: [
+            { id: 1, latitude: 29.389509, longitude: 105.883934, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 2, latitude: 29.389443, longitude: 105.884342, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 3, latitude: 29.390617, longitude: 105.886091, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 4, latitude: 29.389995, longitude: 105.886644, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 5, latitude: 29.389888, longitude: 105.887201, iconPath: '../../images/location.png', title: '教学楼' },
+            { id: 6, latitude: 29.390823, longitude: 105.887348, iconPath: '../../images/location.png', title: '教学楼' },
+          ],
+          color: "#e21918",
+          width: 5,
+          borderWidth: 2,
+        }
+      ],
     ],
     /**区域 */
     polygon: [
@@ -263,10 +322,11 @@ Page({
         zIndex: 88
       }
     ],
-    directionData: ['东', '南', '西', '中'],
+    directionData: ['中', '东', '南', '西'],
     polylineShow: true,
     activeIndex: 0,
-    activeShow: true
+    activeShow: true,
+    mapLine: false
   },
   //事件处理函数
   active(e) {
@@ -275,17 +335,11 @@ Page({
     } = e.currentTarget.dataset
     this.setData({
       activeIndex: index,
-      markers: this.data.categoryData[index]
+      markers: this.data.categoryData[index],
+      polyline: [],
+      polylineShow: true
     })
   },
-  /** 当前位置 */
-  // getCenterLocation() {
-  //   let that = this
-  //   that.setData({
-  //     longitude: 105.886772,
-  //     latitude: 29.391787,
-  //   })
-  // },
   //**开关菜单 */
   activeMap() {
     let that = this
@@ -330,6 +384,27 @@ Page({
   search() {
     wx.navigateTo({
       url: '../search/index',
+    })
+  },
+  /**游览路线 */
+  editLine(e) {
+    const { line } = e.currentTarget.dataset
+    this.data.tagLine[line].forEach(item => {
+      this.setData({
+        markers: item.points
+      })
+    })
+    this.setData({
+      polyline: this.data.tagLine[line],
+      mapLine: true,
+      polylineShow: true
+    })
+  },
+  /**关闭路线 */
+  closeLine() {
+    this.setData({
+      polyline: [],
+      mapLine: false
     })
   },
   onLoad: function () {

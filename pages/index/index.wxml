@@ -1,8 +1,11 @@
 <!--index.wxml-->
+<!-- 地图 -->
 <map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" show-location="{{showLocation}}"
 	show-compass="{{showCompass}}" enable-rotate="{{enableRotate}}" scale="{{scale}}" markers="{{markers}}"
-	polygons="{{polygon}}" enable-rotate="{{true}}" enable-overlooking="{{ true }}" enable-3D="{{ true }}" bindregionchange="moveMap">
+	polygons="{{polygon}}" polyline="{{polyline}}" enable-rotate="{{true}}" enable-overlooking="{{ true }}"
+	enable-3D="{{ true }}" bindregionchange="moveMap">
 </map>
+<!-- 详情、菜单开关 -->
 <view class="nav">
 	<view class="nav_detail" bindtap="jump">
 		<image mode="widthFix" src="../../images/nfsysu.png"></image>
@@ -11,6 +14,7 @@
 		<image mode="widthFix" src="../../images/park.png"></image>
 	</view>
 </view>
+<!-- 右边菜单 -->
 <view class="{{activeShow?'filter_markes':'filter_markes_show'}}">
 	<scroll-view scroll-y="true" style="height:555rpx;" enhanced show-scrollbar>
 		<view class="{{activeIndex===index?['acitve_css filter_markes_item']:'filter_markes_item'}}" wx:for="{{filterData}}"
@@ -19,20 +23,47 @@
 		</view>
 	</scroll-view>
 </view>
+<!-- 中间导航 -->
 <view class="site_tag">
-	<view class="site_tag_now_address" bindtap="nowAddress">
+	<view style="{{ !polylineShow?'left:140rpx':'left:160rpx'}}"
+		class="{{mapLine?'site_tag_now_address_open site_tag_now_address':'site_tag_now_address' }}" bindtap="nowAddress">
 		<image mode="widthFix" src="../../images/target.png"></image>
 	</view>
 	<view class="site_tag_cirle">
 		<view class="{{!polylineShow?'site_tag_cirle_t' :'site_tag_cirle_t_hidden'}}">
-			<view wx:for="{{directionData}}" wx:key="index"><text>{{item}}</text></view>
+			<view wx:for="{{directionData}}" wx:key="index" bindtap="editLine" data-line="{{index}}"><text>{{item}}</text>
+			</view>
 		</view>
 		<view class="site_tag_cirle_b" bindtap="pathLine">
 			<text class="zi" wx:if="{{polylineShow}}">游</text>
 			<text class="cha" wx:else></text>
 		</view>
 	</view>
-	<view class="site_tag_now_address" bindtap="search">
+	<view style="{{ !polylineShow?'right:140rpx':'right:160rpx'}}" class="site_tag_now_search" bindtap="search">
 		<image mode="widthFix" src="../../images/search.png"></image>
 	</view>
+</view>
+<!-- 路线图 -->
+<view class="{{mapLine?'line_map':'line_map_hidden'}}">
+	<view class="line_map_heade">
+		<view class="line_map_title">
+			<text>中游线</text>
+		</view>
+		<view class="line_map_close" bindtap="closeLine">
+			<view></view>
+		</view>
+	</view>
+	<view class="line_map_num">
+		<text>共有6个景点</text>
+	</view>
+	<scroll-view scroll-x="{{true}}">
+		<view class="line_map_flow">
+			<view class="line_map_flow_item" wx:for="{{6}}">
+				<view class="line_img">
+					<image mode="widthFix" src="../../images/markers/xsss.png"></image>
+				</view>
+				<view>宿舍楼</view>
+			</view>
+		</view>
+	</scroll-view>
 </view>
