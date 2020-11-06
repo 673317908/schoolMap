@@ -322,11 +322,13 @@ Page({
         zIndex: 88
       }
     ],
-    directionData: ['中', '东', '南', '西'],
-    polylineShow: true,
-    activeIndex: 0,
-    activeShow: true,
-    mapLine: false
+    polylineShow: true,   // 路线导航
+    activeIndex: 0,  // 右侧菜单选中索引
+    activeShow: true,  // 右侧菜单显示状态
+    navShow: true,  // 学校详情导航
+    directionData: ['中', '东', '南', '西'], // 圆盘数据
+    mapLine: false,  // 路线流程显示状态  
+    mapText: ""
   },
   //事件处理函数
   active(e) {
@@ -388,27 +390,67 @@ Page({
   },
   /**游览路线 */
   editLine(e) {
-    const { line } = e.currentTarget.dataset
+    const { line, text } = e.currentTarget.dataset
     this.data.tagLine[line].forEach(item => {
       this.setData({
-        markers: item.points
+        markers: item.points,
+        navShow: false
       })
     })
     this.setData({
       polyline: this.data.tagLine[line],
       mapLine: true,
-      polylineShow: true
+      polylineShow: true,
+      mapText: text
     })
   },
   /**关闭路线 */
   closeLine() {
     this.setData({
       polyline: [],
-      mapLine: false
+      mapLine: false,
+      navShow: true,
+      activeShow: true
+    })
+  },
+  /**添加气泡提示 */
+  addBubbleTips() {
+    this.data.categoryData.forEach(item => {
+      item.forEach(v => {
+        v.width = 33,
+          v.height = 51,
+          v.label = {
+            anchorY: -80,
+            content: v.title,  //文本
+            color: '#000',  //文本颜色
+            borderRadius: 3,  //边框圆角
+            bgColor: '#ffffff',  //背景色
+            padding: 5,  //文本边缘留白
+            textAlign: 'center'  //文本对齐方式。有效值: left, right, center
+          }
+      })
+    })
+    this.data.tagLine.forEach(item => {
+      item.forEach(v => {
+        v.points.forEach(value => {
+          value.width = 33,
+            value.height = 51,
+            value.label = {
+              anchorY: -80,
+              content: value.title,  //文本
+              color: '#000',  //文本颜色
+              borderRadius: 3,  //边框圆角
+              bgColor: '#ffffff',  //背景色
+              padding: 5,  //文本边缘留白
+              textAlign: 'center'  //文本对齐方式。有效值: left, right, center
+            }
+        })
+      })
     })
   },
   onLoad: function () {
     let that = this
+    that.addBubbleTips()
     that.setData({
       markers: that.data.categoryData[0]
     })

@@ -6,7 +6,7 @@
 	enable-3D="{{ true }}" bindregionchange="moveMap">
 </map>
 <!-- 详情、菜单开关 -->
-<view class="nav">
+<view class="{{navShow?'nav':'nav nav_show'}}">
 	<view class="nav_detail" bindtap="jump">
 		<image mode="widthFix" src="../../images/nfsysu.png"></image>
 	</view>
@@ -31,7 +31,8 @@
 	</view>
 	<view class="site_tag_cirle">
 		<view class="{{!polylineShow?'site_tag_cirle_t' :'site_tag_cirle_t_hidden'}}">
-			<view wx:for="{{directionData}}" wx:key="index" bindtap="editLine" data-line="{{index}}"><text>{{item}}</text>
+			<view wx:for="{{directionData}}" wx:key="index" bindtap="editLine" data-line="{{index}}" data-text="{{item}}">
+				<text>{{item}}</text>
 			</view>
 		</view>
 		<view class="site_tag_cirle_b" bindtap="pathLine">
@@ -44,25 +45,25 @@
 	</view>
 </view>
 <!-- 路线图 -->
-<view class="{{mapLine?'line_map':'line_map_hidden'}}">
+<view wx:if="{{mapLine}}" class="{{mapLine?'line_map':'line_map_hidden'}}">
 	<view class="line_map_heade">
 		<view class="line_map_title">
-			<text>中游线</text>
+			<text>{{mapText}}游线</text>
 		</view>
 		<view class="line_map_close" bindtap="closeLine">
 			<view></view>
 		</view>
 	</view>
 	<view class="line_map_num">
-		<text>共有6个景点</text>
+		<text>共有{{markers.length}}个景点</text>
 	</view>
 	<scroll-view scroll-x="{{true}}">
 		<view class="line_map_flow">
-			<view class="line_map_flow_item" wx:for="{{6}}">
+			<view class="line_map_flow_item" wx:for="{{markers}}" wx:key="id">
 				<view class="line_img">
-					<image mode="widthFix" src="../../images/markers/xsss.png"></image>
+					<image mode="widthFix" src="{{item.iconPath}}"></image>
 				</view>
-				<view>宿舍楼</view>
+				<view>{{item.title}}</view>
 			</view>
 		</view>
 	</scroll-view>

@@ -56,6 +56,14 @@ map {
   position: fixed;
   right: 20rpx;
   top: 13%;
+  transition: all .3s ease;
+}
+
+.nav_show {
+  position: fixed;
+  right: -90rpx;
+  top: 13%;
+  transition: all .3s ease;
 }
 
 .nav image {
@@ -85,7 +93,7 @@ map {
 .site_tag_now_search {
   position: fixed;
   bottom: 120rpx;
-  right:160rpx;
+  right: 160rpx;
   transition: all .3s ease;
 }
 
@@ -255,7 +263,7 @@ map {
   transform: rotate(45deg);
   position: absolute;
   top: 10rpx;
-  left: 35%;
+  left: 34%;
 }
 
 .line_map_close view::after {
@@ -267,7 +275,7 @@ map {
   transform: rotate(-45deg);
   position: absolute;
   top: 10rpx;
-  right: 35%;
+  right: 34%;
 }
 
 .line_map_num {
@@ -286,6 +294,9 @@ map {
   margin: 0 45rpx;
   position: relative;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .line_map_flow_item::before {
