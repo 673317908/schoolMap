@@ -410,7 +410,8 @@ Page({
       polyline: [],
       mapLine: false,
       navShow: true,
-      activeShow: true
+      activeShow: true,
+      scale: 16
     })
   },
   /**添加气泡提示 */
@@ -450,13 +451,12 @@ Page({
   },
   /**点击流程点 */
   handleMarkertap(e) {
-    const {  item } = e.currentTarget.dataset
+    const { item } = e.currentTarget.dataset
     this.setData({
       longitude: item.longitude,
       latitude: item.latitude,
-      scale:18
+      scale: 18
     })
-    console.log(item)
   },
   onLoad: function () {
     let that = this
