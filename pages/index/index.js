@@ -286,41 +286,41 @@ Page({
     ],
     /**区域 */
     polygon: [
-      {
-        points: [
-          { latitude: 29.386410, longitude: 105.883586 },
-          { latitude: 29.386634, longitude: 105.883693 },
-          { latitude: 29.386887, longitude: 105.883741 },
-          { latitude: 29.387092, longitude: 105.883741 },
-          { latitude: 29.388822, longitude: 105.883763 },
-          { latitude: 29.389037, longitude: 105.883768 },
-          { latitude: 29.389126, longitude: 105.883827 },
-          { latitude: 29.390261, longitude: 105.883564 },
-          { latitude: 29.391163, longitude: 105.884036 },
-          { latitude: 29.391738, longitude: 105.884551 },
-          { latitude: 29.391958, longitude: 105.884745 },
-          { latitude: 29.392982, longitude: 105.885313 },
-          { latitude: 29.393136, longitude: 105.885592 },
-          { latitude: 29.393491, longitude: 105.885952 },
-          { latitude: 29.393856, longitude: 105.886257 },
-          { latitude: 29.395828, longitude: 105.887979 },
-          { latitude: 29.395898, longitude: 105.887958 },
-          { latitude: 29.395921, longitude: 105.888011 },
-          { latitude: 29.395501, longitude: 105.889878 },
-          { latitude: 29.395211, longitude: 105.890785 },
-          { latitude: 29.394632, longitude: 105.891021 },
-          { latitude: 29.393715, longitude: 105.890881 },
-          { latitude: 29.393285, longitude: 105.890501 },
-          { latitude: 29.392084, longitude: 105.890023 },
-          { latitude: 29.390486, longitude: 105.888113 },
-          { latitude: 29.389013, longitude: 105.887405 },
-          { latitude: 29.385844, longitude: 105.884938 },
-          { latitude: 29.386410, longitude: 105.883586 }
-        ],
-        strokeWidth: 3,
-        strokeColor: "#6791e5",
-        zIndex: 88
-      }
+      // {
+      //   points: [
+      //     { latitude: 29.386410, longitude: 105.883586 },
+      //     { latitude: 29.386634, longitude: 105.883693 },
+      //     { latitude: 29.386887, longitude: 105.883741 },
+      //     { latitude: 29.387092, longitude: 105.883741 },
+      //     { latitude: 29.388822, longitude: 105.883763 },
+      //     { latitude: 29.389037, longitude: 105.883768 },
+      //     { latitude: 29.389126, longitude: 105.883827 },
+      //     { latitude: 29.390261, longitude: 105.883564 },
+      //     { latitude: 29.391163, longitude: 105.884036 },
+      //     { latitude: 29.391738, longitude: 105.884551 },
+      //     { latitude: 29.391958, longitude: 105.884745 },
+      //     { latitude: 29.392982, longitude: 105.885313 },
+      //     { latitude: 29.393136, longitude: 105.885592 },
+      //     { latitude: 29.393491, longitude: 105.885952 },
+      //     { latitude: 29.393856, longitude: 105.886257 },
+      //     { latitude: 29.395828, longitude: 105.887979 },
+      //     { latitude: 29.395898, longitude: 105.887958 },
+      //     { latitude: 29.395921, longitude: 105.888011 },
+      //     { latitude: 29.395501, longitude: 105.889878 },
+      //     { latitude: 29.395211, longitude: 105.890785 },
+      //     { latitude: 29.394632, longitude: 105.891021 },
+      //     { latitude: 29.393715, longitude: 105.890881 },
+      //     { latitude: 29.393285, longitude: 105.890501 },
+      //     { latitude: 29.392084, longitude: 105.890023 },
+      //     { latitude: 29.390486, longitude: 105.888113 },
+      //     { latitude: 29.389013, longitude: 105.887405 },
+      //     { latitude: 29.385844, longitude: 105.884938 },
+      //     { latitude: 29.386410, longitude: 105.883586 }
+      //   ],
+      //   strokeWidth: 3,
+      //   strokeColor: "#6791e5",
+      //   zIndex: 88
+      // }
     ],
     polylineShow: true,   // 路线导航
     activeIndex: 0,  // 右侧菜单选中索引
@@ -447,6 +447,16 @@ Page({
         })
       })
     })
+  },
+  /**点击流程点 */
+  handleMarkertap(e) {
+    const {  item } = e.currentTarget.dataset
+    this.setData({
+      longitude: item.longitude,
+      latitude: item.latitude,
+      scale:18
+    })
+    console.log(item)
   },
   onLoad: function () {
     let that = this

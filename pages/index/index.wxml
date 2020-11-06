@@ -45,7 +45,7 @@
 	</view>
 </view>
 <!-- 路线图 -->
-<view wx:if="{{mapLine}}" class="{{mapLine?'line_map':'line_map_hidden'}}">
+<view class="{{mapLine?'line_map':'line_map_hidden'}}">
 	<view class="line_map_heade">
 		<view class="line_map_title">
 			<text>{{mapText}}游线</text>
@@ -59,7 +59,7 @@
 	</view>
 	<scroll-view scroll-x="{{true}}">
 		<view class="line_map_flow">
-			<view class="line_map_flow_item" wx:for="{{markers}}" wx:key="id">
+			<view class="line_map_flow_item" wx:for="{{markers}}" wx:key="id" bindtap="handleMarkertap" data-item="{{item}}">
 				<view class="line_img">
 					<image mode="widthFix" src="{{item.iconPath}}"></image>
 				</view>
