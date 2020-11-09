@@ -1,5 +1,7 @@
 <!--pages/components/back.wxml-->
-<view class="back_box" bindtap="back">
-  <view></view>
-  <view></view>
+<view class="big_box">
+  <view class="back_box" bindtap="back">
+    <view class="one"></view>
+    <view class="tow"></view>
+  </view>
 </view>

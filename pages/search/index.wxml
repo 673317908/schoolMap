@@ -1,2 +1,20 @@
 <!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<view class="search">
+  <input type="text" placeholder="请输入地点关键词" bindinput="bindinput"/>
+</view>
+<scroll-view class="scroll_view_w" style="width:100%;" scroll-x="true">
+  <view class="address_list">
+    <view class="{{activeIndex===index?['address_item','active_css']:'address_item'}}" wx:for="{{filterData}}"
+      wx:key="index" data-index="{{index}}" bindtap="active">{{item}}</view>
+  </view>
+</scroll-view>
+<view class="search_result">
+  <view class="search_result_item" wx:for="{{resultData}}" wx:key="id">
+    <view class="search_result_item_l">
+      <image mode="widthFix" src="../../images/markers/station.png"></image>
+    </view>
+    <view class="search_result_item_r">
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+</view>

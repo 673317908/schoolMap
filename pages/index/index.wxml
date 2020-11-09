@@ -3,7 +3,7 @@
 <map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" show-location="{{showLocation}}"
 	show-compass="{{showCompass}}" enable-rotate="{{enableRotate}}" scale="{{scale}}" markers="{{markers}}"
 	polygons="{{polygon}}" polyline="{{polyline}}" enable-rotate="{{true}}" enable-overlooking="{{ true }}"
-	enable-3D="{{ true }}" bindregionchange="moveMap">
+	enable-3D="{{ true }}" bindregionchange="moveMap" bindmarkertap="addressDetail">
 </map>
 <!-- 详情、菜单开关 -->
 <view class="{{navShow?'nav':'nav nav_show'}}">
@@ -59,7 +59,8 @@
 	</view>
 	<scroll-view scroll-x="{{true}}">
 		<view class="line_map_flow">
-			<view class="line_map_flow_item" wx:for="{{markers}}" wx:key="id" bindtap="handleMarkertap" data-item="{{item}}">
+			<view class="line_map_flow_item" wx:for="{{visitData}}" wx:key="id" bindtap="handleMarkertap"
+				data-item="{{item}}">
 				<view class="line_img">
 					<image mode="widthFix" src="{{item.iconPath}}"></image>
 				</view>

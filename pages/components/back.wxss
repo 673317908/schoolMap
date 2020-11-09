@@ -20,7 +20,7 @@ page {
   z-index: 99;
 }
 
-.back_box view:nth-child(1) {
+.back_box .one {
   width: 15rpx;
   height: 15rpx;
   border-top: 6rpx solid #000000;
@@ -30,7 +30,7 @@ page {
   margin-top: -3rpx;
 }
 
-.back_box view:nth-child(2) {
+.back_box .tow {
   width: 20rpx;
   height: 6rpx;
   background: #000000;

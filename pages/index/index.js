@@ -328,7 +328,8 @@ Page({
     navShow: true,  // 学校详情导航
     directionData: ['中', '东', '南', '西'], // 圆盘数据
     mapLine: false,  // 路线流程显示状态  
-    mapText: ""
+    mapText: "",
+    visitData: [] // 游览流程数组
   },
   //事件处理函数
   active(e) {
@@ -392,9 +393,11 @@ Page({
   editLine(e) {
     const { line, text } = e.currentTarget.dataset
     this.data.tagLine[line].forEach(item => {
+      console.log(item)
       this.setData({
         markers: item.points,
-        navShow: false
+        navShow: false,
+        visitData: item.points
       })
     })
     this.setData({
@@ -420,8 +423,9 @@ Page({
       item.forEach(v => {
         v.width = 33,
           v.height = 51,
-          v.label = {
-            anchorY: -80,
+          v.borderWidth = 33,
+          v.callout = {
+            display: 'ALWAYS',
             content: v.title,  //文本
             color: '#000',  //文本颜色
             borderRadius: 3,  //边框圆角
@@ -434,10 +438,11 @@ Page({
     this.data.tagLine.forEach(item => {
       item.forEach(v => {
         v.points.forEach(value => {
-          value.width = 33,
-            value.height = 51,
-            value.label = {
-              anchorY: -80,
+          v.width = 33,
+            v.height = 51,
+            value.borderWidth = 33,
+            value.callout = {
+              display: 'ALWAYS',
               content: value.title,  //文本
               color: '#000',  //文本颜色
               borderRadius: 3,  //边框圆角
@@ -456,6 +461,13 @@ Page({
       longitude: item.longitude,
       latitude: item.latitude,
       scale: 18
+    })
+  },
+  /**地点详情 */
+  addressDetail(e) {
+    const { markerId } = e.detail
+    wx.navigateTo({
+      url: `../shcoolDetail/index?markerId=${markerId}&index=${this.data.activeIndex}`,
     })
   },
   onLoad: function () {

@@ -1,1 +1,43 @@
 /* pages/search/index.wxss */
+.search {
+  padding: 15rpx 20rpx;
+  background: #eeeeee;
+}
+
+input {
+  text-align: center;
+  padding: 10rpx 0;
+  background: white;
+}
+
+.scroll_view_w {
+  white-space: nowrap;
+}
+
+.address_list {
+  display: flex;
+  background: white;
+}
+
+.address_item {
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.active_css {
+  border-bottom: 4rpx solid #a6cbf0;
+}
+
+.search_result_item {
+  display: flex;
+  padding: 15rpx;
+  font-size: 28rpx;
+  align-items: center;
+  background: #f8f8f8;
+}
+
+.search_result_item image {
+  width: 50rpx;
+  margin-right: 15rpx;
+}

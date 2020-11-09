@@ -8,7 +8,6 @@ Page({
 
   },
   back(){
-    console.log(11)
     wx.navigateBack({
       delta: 1,
     })
